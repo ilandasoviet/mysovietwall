@@ -1,10 +1,66 @@
+body { font-family: Arial, sans-serif; margin: 20px; }
+
+.bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.bar button { padding: 8px 10px; }
+
+.container {
+  position: relative;
+  max-width: 1400px;
+}
+
+/* l’image du mur */
+.container > img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* couche zones (au-dessus du mur) */
+#zones {
+  position: absolute;
+  inset: 0;
+}
+
+/* overlay numéroté (au-dessus du mur, en dessous des zones) */
+#overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  pointer-events: none;
+  display: none;
+}
+
+/* zones cliquables */
+.zone {
+  position: absolute;
+  border: 2px dashed blue;
+  background: rgba(0, 0, 255, 0.06);
+  cursor: move;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* numéro dans le coin */
+.zone span {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* poignée de redimensionnement */
 .resize-handle {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  right: -5px;
-  bottom: -5px;
-  background: white;
+  width: 12px;
+  height: 12px;
+  right: -6px;
+  bottom: -6px;
+  background: #fff;
   border: 2px solid blue;
   cursor: nwse-resize;
 }
