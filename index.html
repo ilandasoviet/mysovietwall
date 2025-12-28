@@ -1,154 +1,72 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Soviet Wall</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Soviet Wall</title>
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .container { position: relative; max-width: 1400px; }
+    .container img { width: 100%; height: auto; display: block; }
+
+    /* Zones cliquables invisibles */
+    .zone {
+      position: absolute;
+      display: block;
+      text-decoration: none;
+      background: rgba(255,255,255,0);
+    }
+
+    /* Feedback au survol (utile pour l’utilisateur) */
+    .zone:hover {
+      outline: 2px solid rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Badge caché par défaut (si tu veux le montrer, mets display:inline-block) */
+    .badge { display: none; }
+  </style>
 </head>
+
 <body>
+  <h1>My Soviet Wall</h1>
+  <p>Cliquez sur une affiche pour ouvrir sa fiche.</p>
 
-<h1>My Soviet Wall</h1>
+  <div class="container">
+    <img src="mur.jpg" alt="Mur d'affiches soviétiques">
 
-<div class="bar">
-  <button id="btnEdit" type="button">Édition ON/OFF</button>
-  <button id="btnOverlay" type="button">Overlay numéroté</button>
-  <button id="btnExport" type="button">Exporter zones</button>
-</div>
+    <a class="zone" href="affiche-01.html" style="top:8.224%;left:2.214%;width:7.571%;height:21.790%;"><span class="badge">01</span></a>
+    <a class="zone" href="affiche-02.html" style="top:31.814%;left:2.143%;width:9.857%;height:16.950%;"><span class="badge">02</span></a>
+    <a class="zone" href="affiche-03.html" style="top:50.020%;left:2.143%;width:9.571%;height:16.475%;"><span class="badge">03</span></a>
+    <a class="zone" href="affiche-04.html" style="top:68.227%;left:2.714%;width:8.071%;height:25.816%;"><span class="badge">04</span></a>
+    <a class="zone" href="affiche-05.html" style="top:8.383%;left:10.571%;width:7.571%;height:22.016%;"><span class="badge">05</span></a>
+    <a class="zone" href="affiche-06.html" style="top:12.341%;left:18.929%;width:11.429%;height:17.900%;"><span class="badge">06</span></a>
+    <a class="zone" href="affiche-07.html" style="top:31.766%;left:12.500%;width:16.500%;height:53.205%;"><span class="badge">07</span></a>
+    <a class="zone" href="affiche-08.html" style="top:3.268%;left:31.786%;width:9.714%;height:16.950%;"><span class="badge">08</span></a>
+    <a class="zone" href="affiche-09.html" style="top:22.583%;left:31.857%;width:8.071%;height:24.866%;"><span class="badge">09</span></a>
+    <a class="zone" href="affiche-10.html" style="top:49.814%;left:29.857%;width:6.643%;height:18.216%;"><span class="badge">10</span></a>
+    <a class="zone" href="affiche-11.html" style="top:70.553%;left:31.500%;width:7.429%;height:21.541%;"><span class="badge">11</span></a>
+    <a class="zone" href="affiche-12.html" style="top:3.427%;left:43.357%;width:10.143%;height:16.950%;"><span class="badge">12</span></a>
+    <a class="zone" href="affiche-13.html" style="top:22.535%;left:40.857%;width:8.143%;height:25.114%;"><span class="badge">13</span></a>
+    <a class="zone" href="affiche-14.html" style="top:49.766%;left:37.571%;width:11.571%;height:18.058%;"><span class="badge">14</span></a>
+    <a class="zone" href="affiche-15.html" style="top:70.505%;left:39.929%;width:7.714%;height:22.016%;"><span class="badge">15</span></a>
+    <a class="zone" href="affiche-16.html" style="top:3.062%;left:54.714%;width:10.500%;height:16.792%;"><span class="badge">16</span></a>
+    <a class="zone" href="affiche-17.html" style="top:21.902%;left:49.929%;width:16.786%;height:53.363%;"><span class="badge">17</span></a>
+    <a class="zone" href="affiche-18.html" style="top:77.313%;left:50.929%;width:6.857%;height:19.325%;"><span class="badge">18</span></a>
+    <a class="zone" href="affiche-19.html" style="top:77.265%;left:58.857%;width:6.929%;height:19.483%;"><span class="badge">19</span></a>
+    <a class="zone" href="affiche-20.html" style="top:11.879%;left:67.571%;width:8.786%;height:15.842%;"><span class="badge">20</span></a>
+    <a class="zone" href="affiche-21.html" style="top:29.294%;left:67.571%;width:8.714%;height:15.842%;"><span class="badge">21</span></a>
+    <a class="zone" href="affiche-22.html" style="top:46.709%;left:68.143%;width:7.714%;height:22.174%;"><span class="badge">22</span></a>
+    <a class="zone" href="affiche-23.html" style="top:70.774%;left:68.143%;width:7.857%;height:22.174%;"><span class="badge">23</span></a>
+    <a class="zone" href="affiche-24.html" style="top:4.913%;left:77.571%;width:7.929%;height:22.808%;"><span class="badge">24</span></a>
+    <a class="zone" href="affiche-25.html" style="top:29.721%;left:77.214%;width:8.786%;height:15.367%;"><span class="badge">25</span></a>
+    <a class="zone" href="affiche-26.html" style="top:46.661%;left:77.571%;width:8.143%;height:21.858%;"><span class="badge">26</span></a>
+    <a class="zone" href="affiche-27.html" style="top:70.092%;left:77.571%;width:8.214%;height:22.649%;"><span class="badge">27</span></a>
+    <a class="zone" href="affiche-28.html" style="top:4.390%;left:87.214%;width:11.143%;height:34.207%;"><span class="badge">28</span></a>
+    <a class="zone" href="affiche-29.html" style="top:40.170%;left:87.286%;width:8.143%;height:22.333%;"><span class="badge">29</span></a>
+    <a class="zone" href="affiche-30.html" style="top:64.393%;left:87.357%;width:8.357%;height:21.858%;"><span class="badge">30</span></a>
 
-<div class="container" id="container">
-  <img src="mur.jpg" alt="Mur sans numéros">
-  <img id="overlay" src="mur_annot.jpg" alt="Overlay numéroté">
-  <div id="zones"></div>
-</div>
-
-<textarea id="output" style="width:100%;height:220px;display:none;margin-top:12px" readonly></textarea>
-
-<script>
-let editMode = true;
-let zones = [];
-
-const COLS = 6;
-
-function pad2(n){ return String(n).padStart(2,'0'); }
-function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
-
-function initZones(){
-  zones = [];
-  for(let i=1;i<=30;i++){
-    const r = Math.floor((i-1)/COLS);
-    const c = (i-1)%COLS;
-    zones.push({
-      id:i,
-      top: 3 + r*18,
-      left: 2 + c*16,
-      width: 14,
-      height: 16
-    });
-  }
-}
-
-function render(){
-  const container = document.getElementById('container');
-  const rect = container.getBoundingClientRect();
-  const host = document.getElementById('zones');
-  host.innerHTML = '';
-
-  zones.forEach(z=>{
-    const a = document.createElement('a');
-    a.className = 'zone';
-    a.href = `affiche-${pad2(z.id)}.html`;
-    a.style.top = z.top + '%';
-    a.style.left = z.left + '%';
-    a.style.width = z.width + '%';
-    a.style.height = z.height + '%';
-
-    const badge = document.createElement('span');
-    badge.textContent = pad2(z.id);
-    a.appendChild(badge);
-
-    const handle = document.createElement('div');
-    handle.className = 'resize-handle';
-    a.appendChild(handle);
-
-    // Déplacement
-    a.addEventListener('mousedown', (e)=>{
-      if(!editMode) return;
-      if(e.target.classList.contains('resize-handle')) return;
-      e.preventDefault();
-
-      const startX = e.clientX;
-      const startY = e.clientY;
-      const startTop = z.top;
-      const startLeft = z.left;
-
-      const move = (m)=>{
-        const dx = (m.clientX - startX) / rect.width * 100;
-        const dy = (m.clientY - startY) / rect.height * 100;
-        z.left = clamp(startLeft + dx, 0, 100 - z.width);
-        z.top  = clamp(startTop + dy, 0, 100 - z.height);
-        render();
-      };
-      const up = ()=>{
-        window.removeEventListener('mousemove', move);
-        window.removeEventListener('mouseup', up);
-      };
-      window.addEventListener('mousemove', move);
-      window.addEventListener('mouseup', up);
-    });
-
-    // Redimensionnement
-    handle.addEventListener('mousedown', (e)=>{
-      if(!editMode) return;
-      e.preventDefault();
-      e.stopPropagation();
-
-      const startX = e.clientX;
-      const startY = e.clientY;
-      const startW = z.width;
-      const startH = z.height;
-
-      const move = (m)=>{
-        const dw = (m.clientX - startX) / rect.width * 100;
-        const dh = (m.clientY - startY) / rect.height * 100;
-        z.width  = clamp(startW + dw, 2, 100 - z.left);
-        z.height = clamp(startH + dh, 2, 100 - z.top);
-        render();
-      };
-      const up = ()=>{
-        window.removeEventListener('mousemove', move);
-        window.removeEventListener('mouseup', up);
-      };
-      window.addEventListener('mousemove', move);
-      window.addEventListener('mouseup', up);
-    });
-
-    host.appendChild(a);
-  });
-}
-
-function toggleOverlay(){
-  const o = document.getElementById('overlay');
-  o.style.display = (o.style.display === 'none' || !o.style.display) ? 'block' : 'none';
-}
-
-function exportZones(){
-  const out = document.getElementById('output');
-  out.style.display = 'block';
-  out.value = zones.map(z =>
-    `<a class="zone" href="affiche-${pad2(z.id)}.html" style="top:${z.top.toFixed(3)}%;left:${z.left.toFixed(3)}%;width:${z.width.toFixed(3)}%;height:${z.height.toFixed(3)}%;"><span class="badge">${pad2(z.id)}</span></a>`
-  ).join('\\n');
-  out.focus();
-  out.select();
-}
-
-document.getElementById('btnEdit').addEventListener('click', ()=>{ editMode = !editMode; });
-document.getElementById('btnOverlay').addEventListener('click', toggleOverlay);
-document.getElementById('btnExport').addEventListener('click', exportZones);
-
-initZones();
-render();
-</script>
-
+  </div>
 </body>
 </html>
