@@ -1,100 +1,15 @@
 <!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Soviet Wall</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<html><head><meta charset="utf-8"><title>My Soviet Wall</title></head>
 <body>
-<h1>My Soviet Wall</h1>
-
-<div class="editorbar">
-  <button id="editToggle" type="button">Activer/Désactiver le mode édition</button>
-  <button id="exportBtn" type="button" disabled>Exporter les zones (HTML)</button>
-  <span class="small" id="help">Mode normal: cliquez sur une affiche pour ouvrir sa fiche.</span>
-</div>
-
-<div class="container" id="container">
-  <img src="mur.jpg" alt="Mur d'affiches soviétiques">
-  <div id="zones">
-<a class="zone" href="affiche-01.html" style="top:0.000%;left:23.730%;width:6.543%;height:9.091%;">
-  <span class="badge">01</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-02.html" style="top:0.000%;left:66.846%;width:5.176%;height:8.550%;">
-  <span class="badge">02</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-03.html" style="top:3.139%;left:55.908%;width:8.984%;height:14.394%;">
-  <span class="badge">03</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-04.html" style="top:3.896%;left:31.836%;width:8.838%;height:13.961%;">
-  <span class="badge">04</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-05.html" style="top:4.978%;left:87.842%;width:10.352%;height:56.061%;">
-  <span class="badge">05</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-06.html" style="top:5.736%;left:44.238%;width:8.203%;height:12.338%;">
-  <span class="badge">06</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-07.html" style="top:6.061%;left:77.637%;width:6.641%;height:18.182%;">
-  <span class="badge">07</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-08.html" style="top:9.740%;left:17.920%;width:12.402%;height:18.506%;">
-  <span class="badge">08</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-09.html" style="top:11.039%;left:3.369%;width:5.078%;height:16.558%;">
-  <span class="badge">09</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-10.html" style="top:12.121%;left:50.000%;width:26.172%;height:84.307%;">
-  <span class="badge">10</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-11.html" style="top:22.294%;left:33.105%;width:15.088%;height:22.078%;">
-  <span class="badge">11</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-12.html" style="top:33.009%;left:13.281%;width:15.771%;height:51.840%;">
-  <span class="badge">12</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-13.html" style="top:44.156%;left:79.443%;width:6.250%;height:22.835%;">
-  <span class="badge">13</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-14.html" style="top:44.589%;left:95.898%;width:3.320%;height:7.684%;">
-  <span class="badge">14</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-15.html" style="top:48.810%;left:69.336%;width:5.176%;height:16.342%;">
-  <span class="badge">15</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-16.html" style="top:49.567%;left:30.566%;width:6.055%;height:18.506%;">
-  <span class="badge">16</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-17.html" style="top:51.082%;left:38.135%;width:10.107%;height:14.719%;">
-  <span class="badge">17</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-18.html" style="top:52.597%;left:2.832%;width:7.861%;height:11.688%;">
-  <span class="badge">18</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-19.html" style="top:65.152%;left:88.379%;width:6.104%;height:19.481%;">
-  <span class="badge">19</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-20.html" style="top:70.130%;left:3.369%;width:6.299%;height:20.671%;">
-  <span class="badge">20</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-21.html" style="top:71.320%;left:79.053%;width:5.908%;height:19.372%;">
-  <span class="badge">21</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-22.html" style="top:71.753%;left:40.820%;width:5.566%;height:19.264%;">
-  <span class="badge">22</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-23.html" style="top:72.727%;left:69.336%;width:5.420%;height:17.641%;">
-  <span class="badge">23</span><span class="handle"></span>
-</a>
-<a class="zone" href="affiche-24.html" style="top:79.978%;left:32.471%;width:5.225%;height:10.390%;">
-  <span class="badge">24</span><span class="handle"></span>
-</a>
-  </div>
-</div>
-
-<textarea id="exportBox" style="width:100%;height:220px;display:none;margin-top:12px" readonly></textarea>
-
-<script src="editor.js"></script>
-</body>
-</html>
+<img src="mur.jpg" style="width:100%">
+<a class="zone" href="affiche-01.html" style="position:absolute;top:0.000%;left:23.682%;width:5.957%;height:9.091%;">01</a>
+<a class="zone" href="affiche-02.html" style="position:absolute;top:0.000%;left:66.895%;width:5.127%;height:8.550%;">02</a>
+<a class="zone" href="affiche-03.html" style="position:absolute;top:2.597%;left:54.688%;width:10.547%;height:17.965%;">03</a>
+<a class="zone" href="affiche-04.html" style="position:absolute;top:2.922%;left:29.834%;width:56.543%;height:94.156%;">04</a>
+<a class="zone" href="affiche-05.html" style="position:absolute;top:4.329%;left:87.158%;width:12.012%;height:82.684%;">05</a>
+<a class="zone" href="affiche-06.html" style="position:absolute;top:8.658%;left:10.742%;width:19.629%;height:21.970%;">06</a>
+<a class="zone" href="affiche-07.html" style="position:absolute;top:8.766%;left:2.344%;width:7.568%;height:21.753%;">07</a>
+<a class="zone" href="affiche-08.html" style="position:absolute;top:32.035%;left:2.246%;width:26.807%;height:53.788%;">08</a>
+<a class="zone" href="affiche-09.html" style="position:absolute;top:50.541%;left:2.344%;width:9.326%;height:43.723%;">09</a>
+<a class="zone" href="affiche-10.html" style="position:absolute;top:70.346%;left:31.299%;width:16.113%;height:22.186%;">10</a>
+</body></html>

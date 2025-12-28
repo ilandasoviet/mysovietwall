@@ -1,16 +1,1 @@
-
-body{font-family:Arial,sans-serif;margin:20px}
-.container{position:relative;max-width:1400px}
-.container img{width:100%;height:auto;display:block}
-.zone{position:absolute;cursor:pointer}
-.zone:hover{outline:2px solid #fff;background:rgba(255,255,255,0.08)}
-.badge{position:absolute;top:4px;left:4px;background:rgba(0,0,0,.6);color:#fff;padding:2px 6px;border-radius:10px;font-size:12px}
-.card img{max-width:100%;border:1px solid #ddd}
-.meta{color:#444;line-height:1.5}
-nav a{margin-right:10px}
-.editorbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
-button{padding:8px 10px}
-.small{font-size:12px;color:#444}
-.handle{position:absolute;width:10px;height:10px;background:#fff;border:1px solid #000;right:-6px;bottom:-6px;cursor:nwse-resize;display:none}
-.zone.editing{outline:2px dashed #00f;background:rgba(0,0,255,0.06)}
-.zone.editing .handle{display:block}
+body{font-family:Arial,sans-serif}
