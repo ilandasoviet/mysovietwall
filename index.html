@@ -1,79 +1,29 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>My Soviet Wall</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    .container {
-      position: relative;
-      max-width: 1400px;
-    }
-    .container img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .zone {
-      position: absolute;
-      cursor: pointer;
-    }
-    .zone:hover {
-      outline: 2px solid rgba(255,255,255,0.9);
-      background: rgba(255,255,255,0.08);
-    }
-    .badge {
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      padding: 2px 6px;
-      border-radius: 10px;
-      font-size: 12px;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Soviet Wall</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <h1>My Soviet Wall</h1>
-<p>Cliquez sur une affiche pour ouvrir sa fiche.</p>
 
-<div class="container">
-  <img src="mur.jpg" alt="Mur d'affiches soviétiques">
-
-  <!-- ZONES CLIQUABLES (exemples visibles) -->
-  <!-- Vous pourrez affiner plus tard si besoin -->
-
-  <a class="zone" href="affiche-01.html" style="top:5%; left:2%; width:14%; height:18%;">
-    <span class="badge">01</span>
-  </a>
-  <a class="zone" href="affiche-02.html" style="top:5%; left:18%; width:14%; height:18%;">
-    <span class="badge">02</span>
-  </a>
-  <a class="zone" href="affiche-03.html" style="top:5%; left:34%; width:14%; height:18%;">
-    <span class="badge">03</span>
-  </a>
-  <a class="zone" href="affiche-04.html" style="top:5%; left:50%; width:14%; height:18%;">
-    <span class="badge">04</span>
-  </a>
-  <a class="zone" href="affiche-05.html" style="top:5%; left:66%; width:14%; height:18%;">
-    <span class="badge">05</span>
-  </a>
-  <a class="zone" href="affiche-06.html" style="top:5%; left:82%; width:14%; height:18%;">
-    <span class="badge">06</span>
-  </a>
-
-  <!-- (les autres lignes 7–30 pourront être ajustées ensuite,
-       mais le mur NE DISPARAÎTRA PLUS) -->
-
+<div class="bar">
+  <button onclick="toggleEdit()">Édition ON / OFF</button>
+  <button onclick="toggleOverlay()">Overlay numéroté</button>
+  <button onclick="exportZones()">Exporter zones</button>
 </div>
 
+<div class="container" id="container">
+  <img src="mur.jpg" alt="Mur sans numéros">
+  <img id="overlay" src="mur_annot.jpg" alt="Overlay" style="display:none;">
+  <div id="zones"></div>
+</div>
+
+<textarea id="output" style="width:100%;height:200px;display:none;"></textarea>
+
+<script src="editor.js"></script>
 </body>
 </html>
