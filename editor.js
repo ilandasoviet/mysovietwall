@@ -1,18 +1,18 @@
 let zones = [];
 let editMode = true;
 
-// 6 colonnes x 5 lignes = 30 zones visibles, non superposées
 const COLS = 6;
 const ROWS = 5;
 
+// Initialisation en grille (30 zones visibles)
 for (let i = 1; i <= 30; i++) {
   const r = Math.floor((i - 1) / COLS);
   const c = (i - 1) % COLS;
 
   zones.push({
     id: i,
-    top: 3 + r * 18,     // espacement vertical
-    left: 2 + c * 16,    // espacement horizontal
+    top: 3 + r * 18,
+    left: 2 + c * 16,
     width: 14,
     height: 16
   });
@@ -23,6 +23,7 @@ function pad2(n) {
 }
 
 function render() {
+  const container = document.getElementById("container");
   const z = document.getElementById("zones");
   z.innerHTML = "";
 
@@ -30,33 +31,36 @@ function render() {
     const a = document.createElement("a");
     a.className = "zone";
     a.href = `affiche-${pad2(zone.id)}.html`;
-    a.dataset.id = zone.id;
 
     a.style.top = zone.top + "%";
     a.style.left = zone.left + "%";
     a.style.width = zone.width + "%";
     a.style.height = zone.height + "%";
 
-    a.innerHTML = `<span>${pad2(zone.id)}</span>`;
+    a.innerHTML = `
+      <span>${pad2(zone.id)}</span>
+      <div class="resize-handle"></div>
+    `;
 
-    // Déplacement (mode édition)
+    /* === DÉPLACEMENT === */
     a.onmousedown = (e) => {
-      if (!editMode) return;           // en mode normal, on clique pour ouvrir la fiche
-      e.preventDefault();
+      if (!editMode) return;
+      if (e.target.classList.contains("resize-handle")) return;
 
-      let sx = e.clientX, sy = e.clientY;
+      e.preventDefault();
+      const startX = e.clientX;
+      const startY = e.clientY;
       const startTop = zone.top;
       const startLeft = zone.left;
 
-      const container = document.getElementById("container").getBoundingClientRect();
+      const rect = container.getBoundingClientRect();
 
       document.onmousemove = (m) => {
-        const dx = (m.clientX - sx) / container.width * 100;
-        const dy = (m.clientY - sy) / container.height * 100;
+        const dx = (m.clientX - startX) / rect.width * 100;
+        const dy = (m.clientY - startY) / rect.height * 100;
 
         zone.left = Math.max(0, Math.min(100 - zone.width, startLeft + dx));
         zone.top  = Math.max(0, Math.min(100 - zone.height, startTop + dy));
-
         render();
       };
 
@@ -66,10 +70,34 @@ function render() {
       };
     };
 
-    // En mode normal, empêcher le drag et laisser le clic ouvrir
-    if (!editMode) {
-      a.style.borderStyle = "solid";
-    }
+    /* === REDIMENSIONNEMENT === */
+    const handle = a.querySelector(".resize-handle");
+    handle.onmousedown = (e) => {
+      if (!editMode) return;
+      e.stopPropagation();
+      e.preventDefault();
+
+      const startX = e.clientX;
+      const startY = e.clientY;
+      const startW = zone.width;
+      const startH = zone.height;
+
+      const rect = container.getBoundingClientRect();
+
+      document.onmousemove = (m) => {
+        const dw = (m.clientX - startX) / rect.width * 100;
+        const dh = (m.clientY - startY) / rect.height * 100;
+
+        zone.width  = Math.max(2, Math.min(100 - zone.left, startW + dw));
+        zone.height = Math.max(2, Math.min(100 - zone.top, startH + dh));
+        render();
+      };
+
+      document.onmouseup = () => {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      };
+    };
 
     z.appendChild(a);
   });
@@ -77,7 +105,6 @@ function render() {
 
 function toggleEdit() {
   editMode = !editMode;
-  render();
 }
 
 function toggleOverlay() {
