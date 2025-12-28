@@ -11,19 +11,144 @@
 <h1>My Soviet Wall</h1>
 
 <div class="bar">
-  <button onclick="toggleEdit()">Édition ON / OFF</button>
-  <button onclick="toggleOverlay()">Overlay numéroté</button>
-  <button onclick="exportZones()">Exporter zones</button>
+  <button id="btnEdit" type="button">Édition ON/OFF</button>
+  <button id="btnOverlay" type="button">Overlay numéroté</button>
+  <button id="btnExport" type="button">Exporter zones</button>
 </div>
 
 <div class="container" id="container">
   <img src="mur.jpg" alt="Mur sans numéros">
-  <img id="overlay" src="mur_annot.jpg" alt="Overlay" style="display:none;">
+  <img id="overlay" src="mur_annot.jpg" alt="Overlay numéroté">
   <div id="zones"></div>
 </div>
 
-<textarea id="output" style="width:100%;height:200px;display:none;"></textarea>
+<textarea id="output" style="width:100%;height:220px;display:none;margin-top:12px" readonly></textarea>
 
-<script src="editor.js"></script>
+<script>
+let editMode = true;
+let zones = [];
+
+const COLS = 6;
+
+function pad2(n){ return String(n).padStart(2,'0'); }
+function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
+
+function initZones(){
+  zones = [];
+  for(let i=1;i<=30;i++){
+    const r = Math.floor((i-1)/COLS);
+    const c = (i-1)%COLS;
+    zones.push({
+      id:i,
+      top: 3 + r*18,
+      left: 2 + c*16,
+      width: 14,
+      height: 16
+    });
+  }
+}
+
+function render(){
+  const container = document.getElementById('container');
+  const rect = container.getBoundingClientRect();
+  const host = document.getElementById('zones');
+  host.innerHTML = '';
+
+  zones.forEach(z=>{
+    const a = document.createElement('a');
+    a.className = 'zone';
+    a.href = `affiche-${pad2(z.id)}.html`;
+    a.style.top = z.top + '%';
+    a.style.left = z.left + '%';
+    a.style.width = z.width + '%';
+    a.style.height = z.height + '%';
+
+    const badge = document.createElement('span');
+    badge.textContent = pad2(z.id);
+    a.appendChild(badge);
+
+    const handle = document.createElement('div');
+    handle.className = 'resize-handle';
+    a.appendChild(handle);
+
+    // Déplacement
+    a.addEventListener('mousedown', (e)=>{
+      if(!editMode) return;
+      if(e.target.classList.contains('resize-handle')) return;
+      e.preventDefault();
+
+      const startX = e.clientX;
+      const startY = e.clientY;
+      const startTop = z.top;
+      const startLeft = z.left;
+
+      const move = (m)=>{
+        const dx = (m.clientX - startX) / rect.width * 100;
+        const dy = (m.clientY - startY) / rect.height * 100;
+        z.left = clamp(startLeft + dx, 0, 100 - z.width);
+        z.top  = clamp(startTop + dy, 0, 100 - z.height);
+        render();
+      };
+      const up = ()=>{
+        window.removeEventListener('mousemove', move);
+        window.removeEventListener('mouseup', up);
+      };
+      window.addEventListener('mousemove', move);
+      window.addEventListener('mouseup', up);
+    });
+
+    // Redimensionnement
+    handle.addEventListener('mousedown', (e)=>{
+      if(!editMode) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      const startX = e.clientX;
+      const startY = e.clientY;
+      const startW = z.width;
+      const startH = z.height;
+
+      const move = (m)=>{
+        const dw = (m.clientX - startX) / rect.width * 100;
+        const dh = (m.clientY - startY) / rect.height * 100;
+        z.width  = clamp(startW + dw, 2, 100 - z.left);
+        z.height = clamp(startH + dh, 2, 100 - z.top);
+        render();
+      };
+      const up = ()=>{
+        window.removeEventListener('mousemove', move);
+        window.removeEventListener('mouseup', up);
+      };
+      window.addEventListener('mousemove', move);
+      window.addEventListener('mouseup', up);
+    });
+
+    host.appendChild(a);
+  });
+}
+
+function toggleOverlay(){
+  const o = document.getElementById('overlay');
+  o.style.display = (o.style.display === 'none' || !o.style.display) ? 'block' : 'none';
+}
+
+function exportZones(){
+  const out = document.getElementById('output');
+  out.style.display = 'block';
+  out.value = zones.map(z =>
+    `<a class="zone" href="affiche-${pad2(z.id)}.html" style="top:${z.top.toFixed(3)}%;left:${z.left.toFixed(3)}%;width:${z.width.toFixed(3)}%;height:${z.height.toFixed(3)}%;"><span class="badge">${pad2(z.id)}</span></a>`
+  ).join('\\n');
+  out.focus();
+  out.select();
+}
+
+document.getElementById('btnEdit').addEventListener('click', ()=>{ editMode = !editMode; });
+document.getElementById('btnOverlay').addEventListener('click', toggleOverlay);
+document.getElementById('btnExport').addEventListener('click', exportZones);
+
+initZones();
+render();
+</script>
+
 </body>
 </html>
