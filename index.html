@@ -1,1 +1,47 @@
-<html><body>My Soviet Wall</body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Soviet Wall</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .container { position: relative; max-width: 1400px; }
+    .container img { width: 100%; height: auto; display: block; }
+    .zone {
+      position: absolute;
+      cursor: pointer;
+    }
+    .zone:hover {
+      outline: 2px solid #fff;
+      background: rgba(255,255,255,0.08);
+    }
+    .badge {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      background: rgba(0,0,0,.6);
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>My Soviet Wall</h1>
+<p>Cliquez sur une affiche pour ouvrir sa fiche.</p>
+
+<div class="container">
+  <img src="mur.jpg" alt="Mur d'affiches soviétiques">
+
+  <!-- IMPORTANT :
+       Les zones cliquables doivent être ici.
+       Si vous ne voyez toujours rien après sauvegarde,
+       dites-le moi et je vous redonne LE BON BLOC
+       avec les 30 zones intégrées. -->
+</div>
+
+</body>
+</html>
